@@ -1,0 +1,7 @@
+#provision-eks
+eks_cluster_name    = ""
+vpc_name            = ""
+region              = ""
+instance_type       = ""
+num_workers         = 2
+map_users           = []

@@ -1,0 +1,30 @@
+#deployments
+remote_state_bucket_name = ""
+remote_state_key         = ""
+remote_state_region      = ""
+
+dev_acm_cert_arn     = ""
+prod_acm_cert_arn    = ""
+staging_acm_cert_arn = ""
+
+dev_container_image = ""
+dev_container_port  = 4000
+
+staging_container_image = ""
+staging_container_port  = 80
+
+prod_container_image = ""
+prod_container_port  = 80
+
+
+# dev env vars
+dev_env_var_1       = ""
+dev_env_var_2       = ""
+
+# staging env vars
+staging_env_var_1       = ""
+staging_env_var_2       = ""
+
+# prod env vars
+prod_env_var_1       = ""
+prod_env_var_2       = ""

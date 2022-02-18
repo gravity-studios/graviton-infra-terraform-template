@@ -1,0 +1,10 @@
+#mongodb
+remote_state_bucket_name = ""
+remote_state_key         = ""
+remote_state_region      = ""
+atlas_organization_id    = ""
+mongo_region_name        = ""
+dev_mongo_cluster_tier   = ""
+dev_mongo_master_user    = ""
+prod_mongo_cluster_tier  = ""
+prod_mongo_master_user   = ""

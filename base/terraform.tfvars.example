@@ -1,0 +1,5 @@
+#base
+main_common_name     = ""
+hosted_zone          = ""
+main_alternate_names = []
+ecr_name_prefix      = ""
