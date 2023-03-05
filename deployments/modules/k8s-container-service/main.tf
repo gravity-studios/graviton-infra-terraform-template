@@ -15,7 +15,7 @@ provider "kubernetes" {
   host                   = data.aws_eks_cluster.cluster.endpoint
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
   exec {
-    api_version = "client.authentication.k8s.io/v1alpha1"
+    api_version = "client.authentication.k8s.io/v1beta1"
     command     = "aws"
     args = [
       "eks",
@@ -112,13 +112,13 @@ resource "kubernetes_service" "nginx" {
   }
 }
 
-resource "kubernetes_ingress" "alb-ingress" {
+resource "kubernetes_ingress_v1" "alb-ingress" {
   metadata {
     name      = "lb-${var.app_name}"
     namespace = var.kubernetes_namespace
     #    namespace = kubernetes_namespace.echoserver.metadata[0].name
     annotations = {
-      "kubernetes.io/ingress.class" : "alb"
+#      "kubernetes.io/ingress.class" : "alb"
       "alb.ingress.kubernetes.io/scheme" : "internet-facing"
       "alb.ingress.kubernetes.io/subnets" : join(",", var.vpc_public_subnets)
       "alb.ingress.kubernetes.io/listen-ports" : "[{\"HTTPS\":443}, {\"HTTP\":80}]"
@@ -129,20 +129,29 @@ resource "kubernetes_ingress" "alb-ingress" {
     }
   }
   spec {
+    ingress_class_name = "alb"
     rule {
       http {
         path {
           path = "/"
           backend {
-            service_name = "ssl-redirect"
-            service_port = "use-annotation"
+            service {
+              name = "ssl-redirect"
+              port { name = "use-annotation"}
+            }
+#            service_name = "ssl-redirect"
+#            service_port = "use-annotation"
           }
         }
         path {
           path = "/"
           backend {
-            service_name = var.app_name
-            service_port = "80"
+            service {
+              name = var.app_name
+              port { number = "80"}
+            }
+#            service_name = var.app_name
+#            service_port = "80"
           }
         }
       }

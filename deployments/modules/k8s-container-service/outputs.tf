@@ -4,6 +4,6 @@
  */
 
 output "lb_ip" {
-  value = kubernetes_ingress.alb-ingress.status.0.load_balancer.0.ingress.0.hostname
+  value = kubernetes_ingress_v1.alb-ingress.status.0.load_balancer.0.ingress.0.hostname
   description = "FQDN of backend load balancer"
 }
