@@ -2,7 +2,7 @@
 
 `Terraform` HCL files for provisioning AWS infrastructure:
 
-- AWS EKS cluster
+- AWS EKS cluster (based on the excellent AWS EKS Blueprints: https://github.com/aws-ia/terraform-aws-eks-blueprints)
 - IAM roles and policies
 - ACM certificates for all SSL load balancers as well as CloudFront Distributions
 - MongoDB cluster provisioning per environment
@@ -11,9 +11,9 @@
 - CloudWatch based logging via Fluent Bit
 - VPC provisioning
 - S3+CloudFront front-end hosting
+- RDS relational DBMS
 - Route53 integration (TODO)
 - ElastiCache Redis clusters (TODO)
-- RDS relational DBMS (TODO)
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ export MONGODB_ATLAS_PUBLIC_KEY='<your-mongodb-atlas-public-key>'
 export MONGODB_ATLAS_PRIVATE_KEY='<your-mongodb-atlas-private-key>'
 ````
 
-You will also require Terraform `0.14.5`. Using `terraenv` and `direnv` to manage these environment variables is 
+You will also require Terraform `1.0.0`. Using `terraenv` and `direnv` to manage these environment variables is 
 recommended.
 
 ## Module manifest & descriptions
